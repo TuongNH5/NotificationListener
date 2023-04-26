@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Check if the app has permission to read notifications
+        listenerService();
+    }
+
+    void listenerService(){
         if (!isNotificationServiceEnabled()) {
             // If not, ask the user to grant permission
             Intent intent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyNotificationListenerService.class);
         startService(intent);
     }
+
     private boolean isNotificationServiceEnabled() {
         ComponentName cn = new ComponentName(this, MyNotificationListenerService.class);
         String flat = Settings.Secure.getString(getContentResolver(), "enabled_notification_listeners");
