@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyNotificationListenerService.class);
         startService(intent);
     }
-
     private boolean isNotificationServiceEnabled() {
         ComponentName cn = new ComponentName(this, MyNotificationListenerService.class);
         String flat = Settings.Secure.getString(getContentResolver(), "enabled_notification_listeners");
